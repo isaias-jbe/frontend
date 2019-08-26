@@ -1,0 +1,32 @@
+<div class="row">
+  <table class="table">
+    <tr *ngFor="let event of events.data">
+      <td class="text-left">
+        <a (click)="edit(event)">
+          <span *ngIf="event !== editEvent">{{ event.title }}</span>
+          <input
+            *ngIf="event === editEvent"
+            [(ngModel)]="event.title"
+            (blur)="update()"
+            (keyup.enter)="update()"
+          />
+        </a>
+      </td>
+      <td class="text-left">
+        <span>{{ event.start }}</span>
+      </td>
+      <td class="text-right">
+        <button
+          class="btn btn-outline-danger btn-sm"
+          (click)="deleteEvent(event)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </table>
+
+  <div class="card card-body bg-light text-center">
+    <span class="small">click no item para editar</span>
+  </div>
+</div>
